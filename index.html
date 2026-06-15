@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mob Shot | Rooftop Fruit Shooter</title>
+  <meta name="description" content="Mob Shot is a stylish rooftop fruit shooter with cinematic camera moves, noir city backdrops, and fast arcade marksmanship.">
+  <style>
+    :root {
+      --bg: #0e1523;
+      --bg-soft: #162238;
+      --card: rgba(18, 28, 44, 0.76);
+      --line: rgba(187, 201, 230, 0.18);
+      --text: #eef3fb;
+      --muted: #a7b4cc;
+      --accent: #d8b36a;
+      --accent-2: #89a8d8;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(216, 179, 106, 0.16), transparent 24%),
+        linear-gradient(180deg, #1b2740 0%, #101726 55%, #0a1019 100%);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(40px, 7vw, 74px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(18px, 2.1vw, 22px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 26px;
+      align-items: end;
+      margin-top: 34px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-copy {
+      padding: 30px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stat span {
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .hero-card {
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .hero-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.03em;
+    }
+
+    .section-lead {
+      max-width: 760px;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 24px;
+    }
+
+    .feature h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .shot {
+      overflow: hidden;
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 2622 / 1206;
+      object-fit: cover;
+    }
+
+    .shot figcaption {
+      padding: 14px 16px 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 40px 0 56px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .feature-grid,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <span class="eyebrow">Arcade Marksmanship</span>
+      <div class="hero-grid">
+        <div class="panel hero-copy">
+          <h1>Mob Shot</h1>
+          <p class="lead">A stylish rooftop fruit shooter built around one-shot precision, moving city backdrops, and a playful noir underworld vibe. Aim fast, clear the fruit, and avoid the wrong target.</p>
+          <div class="stats">
+            <div class="stat">
+              <strong>Genre</strong>
+              <span>Arcade Shooter</span>
+            </div>
+            <div class="stat">
+              <strong>Mode</strong>
+              <span>Offline Solo Play</span>
+            </div>
+            <div class="stat">
+              <strong>Hook</strong>
+              <span>Easy to Learn, Hard to Master</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel hero-card">
+          <img src="./appstore/screenshots/6.3-landscape/mob-shot-poker-chip-shot-6_3-1.png" alt="Mob Shot gameplay screenshot">
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>What Makes It Fun</h2>
+      <p class="section-lead">Mob Shot mixes quick-session arcade controls with cinematic framing, exaggerated gunplay, and fruit targets balanced above stylized characters. Each level is designed to feel readable, punchy, and replayable.</p>
+      <div class="feature-grid">
+        <article class="panel feature">
+          <h3>Quick Skill Shots</h3>
+          <p>Drag to aim, read the trajectory, and fire before the moment slips away. Every shot matters.</p>
+        </article>
+        <article class="panel feature">
+          <h3>American City Backdrops</h3>
+          <p>Progress through levels inspired by major U.S. cities, each with its own skyline rhythm, color palette, and silhouette landmarks.</p>
+        </article>
+        <article class="panel feature">
+          <h3>Readable Arcade Challenge</h3>
+          <p>Simple controls, clean objective design, and rising pressure make it easy to start and satisfying to improve.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Gameplay Gallery</h2>
+      <p class="section-lead">These screenshots were prepared from in-game captures and resized for App Store submission formats.</p>
+      <div class="gallery">
+        <figure class="panel shot">
+          <img src="./appstore/screenshots/6.3-landscape/mob-shot-poker-chip-shot-6_3-2.png" alt="Mob Shot city rooftop level">
+          <figcaption>Noir skyline mood with clean target readability.</figcaption>
+        </figure>
+        <figure class="panel shot">
+          <img src="./appstore/screenshots/6.3-landscape/mob-shot-poker-chip-shot-6_3-3.png" alt="Mob Shot action scene">
+          <figcaption>Cinematic framing keeps the weapon, fruit, and risk in view.</figcaption>
+        </figure>
+        <figure class="panel shot">
+          <img src="./appstore/screenshots/6.3-landscape/mob-shot-poker-chip-shot-6_3-4.png" alt="Mob Shot level progression">
+          <figcaption>Different city-inspired stages create visual variety as difficulty ramps up.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Core Features</h2>
+      <p class="section-lead">Built for pick-up-and-play sessions while still offering strong visual identity and a clear arcade loop.</p>
+      <div class="feature-grid">
+        <article class="panel feature">
+          <h3>One-Hand Friendly</h3>
+          <p>Simple drag-and-release controls make each session fast, accessible, and mobile-friendly.</p>
+        </article>
+        <article class="panel feature">
+          <h3>Strong Visual Theme</h3>
+          <p>Cartoon noir characters, rooftop silhouettes, and cinematic camera movement give the game a distinct style.</p>
+        </article>
+        <article class="panel feature">
+          <h3>Replay Motivation</h3>
+          <p>Score chasing, cleaner clears, and better shot efficiency encourage players to jump back in for another run.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Mob Shot is an original arcade shooter experience created for iPhone players who enjoy fast action, stylized presentation, and satisfying target shots.</div>
+      <div class="footer-links">
+        <a href="./privacy.html">Privacy Policy</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
